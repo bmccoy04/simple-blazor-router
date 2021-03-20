@@ -4,6 +4,5 @@ namespace simple_blazor_router.Services.TicTakToeApplicationServices
 {
     public interface ITicTacToeHorizontalChecker
     {
-        bool CheckWinner(TicTacToeEnum currentTurn, GameSpace[,] spaces);
     }
 }
