@@ -1,0 +1,25 @@
+@page "/simple-context"
+
+<h3>
+    Parent Count => @Count
+</h3>
+<hr>
+<div>
+    <CascadingValue Value=@Count>
+        <SimpleContextChildWrapper></SimpleContextChildWrapper>
+        <br>
+        <SimpleContextInput UpdateCount=@UpdateCount></SimpleContextInput>
+    </CascadingValue>
+</div>
+
+@code{
+    public int Count { get; set; }
+    protected override void OnInitialized()
+    {
+        Count = 1;
+    }
+    private void UpdateCount(int number)
+    {
+        Count = number + Count;
+    }
+}

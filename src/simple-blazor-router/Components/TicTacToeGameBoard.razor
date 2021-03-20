@@ -1,0 +1,46 @@
+@using simple_blazor_router.Models;
+
+<table>
+    <tr>
+        <td>
+            <TicTacToeGamePiece TicTacToeGame=@TicTacToeGame  SpaceX=0 SpaceY=0  SelectCell="SelectCell" ></TicTacToeGamePiece>
+        </td>
+        <td>
+            <TicTacToeGamePiece TicTacToeGame=@TicTacToeGame  SpaceX=1 SpaceY=0  SelectCell="SelectCell" ></TicTacToeGamePiece>
+        </td>
+        <td>
+            <TicTacToeGamePiece TicTacToeGame=@TicTacToeGame  SpaceX=2 SpaceY=0  SelectCell="SelectCell" ></TicTacToeGamePiece>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <TicTacToeGamePiece TicTacToeGame=@TicTacToeGame  SpaceX=0 SpaceY=1  SelectCell="SelectCell" ></TicTacToeGamePiece>
+        </td>
+        <td>
+            <TicTacToeGamePiece TicTacToeGame=@TicTacToeGame  SpaceX=1 SpaceY=1  SelectCell="SelectCell" ></TicTacToeGamePiece>
+        </td>
+        <td>
+            <TicTacToeGamePiece TicTacToeGame=@TicTacToeGame  SpaceX=2 SpaceY=1  SelectCell="SelectCell" ></TicTacToeGamePiece>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <TicTacToeGamePiece TicTacToeGame=@TicTacToeGame  SpaceX=0 SpaceY=2  SelectCell="SelectCell" ></TicTacToeGamePiece>
+        </td>
+        <td>
+            <TicTacToeGamePiece TicTacToeGame=@TicTacToeGame  SpaceX=1 SpaceY=2  SelectCell="SelectCell" ></TicTacToeGamePiece>
+        </td>
+        <td>
+            <TicTacToeGamePiece TicTacToeGame=@TicTacToeGame SpaceX=2 SpaceY=2  SelectCell="SelectCell" ></TicTacToeGamePiece>
+        </td>
+    </tr>
+</table>
+
+@code
+{
+    [Parameter]
+    public ITicTacToeGame TicTacToeGame { get; set; }
+
+    [Parameter]
+    public EventCallback SelectCell { get; set; }
+}

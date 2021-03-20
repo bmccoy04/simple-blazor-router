@@ -1,0 +1,31 @@
+<div>
+    Input => button here
+    <br>
+    @Count
+</div>
+<div>
+    <EditForm Model=@FormData OnSubmit=@OnSubmit>
+        <InputNumber @bind-Value=FormData.NumberInput ParsingErrorMessage="Must be an integer value"></InputNumber>
+        <br>
+        <input type="submit" value="Submit">
+    </EditForm>
+</div>
+@code 
+{
+    
+    [CascadingParameter] public int Count { get; set; }
+    SimpleContextModel FormData = new SimpleContextModel();
+
+    [Parameter]
+    public EventCallback<int> UpdateCount { get; set; }
+
+    async void OnSubmit()
+    {
+        await UpdateCount.InvokeAsync(FormData.NumberInput); 
+    }
+
+    class SimpleContextModel
+    {
+        public int NumberInput { get; set; }
+    }
+}

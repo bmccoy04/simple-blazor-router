@@ -1,0 +1,15 @@
+@page "/onewaybinding"
+
+<h1 @onclick="OneWay">One way binding</h1>
+
+<FortyTwo Meaning=@Hey></FortyTwo>
+
+@code {
+    public string Hey { get; set; }
+    public void OneWay(MouseEventArgs args)
+    {
+        System.Diagnostics.Debug.WriteLine("H1 clicked");
+
+        Hey = "Hey!";
+    }
+}
