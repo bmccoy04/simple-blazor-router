@@ -21,9 +21,9 @@ namespace simple_blazor_router
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddScoped<ITicTacToeGame, TicTacToeGame>();
-            builder.Services.AddScoped<ITicTacToeDiagonalChecker, TicTacToeDiagonalChecker>();
-            builder.Services.AddScoped<ITicTacToeHorizontalChecker, TicTacToeHorizontalChecker>();
-            builder.Services.AddScoped<ITicTacToeVerticalChecker, TicTacToeVerticalChecker>();
+            //builder.Services.AddScoped<ITicTacToeDiagonalChecker, TicTacToeDiagonalChecker>();
+            //builder.Services.AddScoped<ITicTacToeHorizontalChecker, TicTacToeHorizontalChecker>();
+            //builder.Services.AddScoped<ITicTacToeVerticalChecker, TicTacToeVerticalChecker>();
 
             await builder.Build().RunAsync();
         }
