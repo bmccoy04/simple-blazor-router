@@ -1,32 +1,6 @@
 @using simple_blazor_router.Models;
 
-<span @onclick="ClickSquare">
-    @TicTacToeGame.SpaceValue(SpaceX, SpaceY)
-</span>
-
 @code 
 {
-    [Parameter]
-    public ITicTacToeGame TicTacToeGame { get; set; }
-
-    [Parameter]
-    public int SpaceX { get; set; }
-
-    [Parameter]
-    public int SpaceY { get; set; }
-
-    [Parameter]
-    public EventCallback SelectCell { get; set; }
-    private async void ClickSquare()
-    {
-        var selected = TicTacToeGame.SelectSpace(SpaceX, SpaceY);
-        Console.WriteLine("Clicked");
-
-        Console.WriteLine(selected);
-        Console.WriteLine(TicTacToeGame.SpaceValue(SpaceX, SpaceY));
-
-        if(selected)
-            await SelectCell.InvokeAsync();
-
-    }
+   
 }
