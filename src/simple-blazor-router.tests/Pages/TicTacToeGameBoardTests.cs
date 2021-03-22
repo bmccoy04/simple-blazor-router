@@ -43,7 +43,7 @@ namespace simple_blazor_router.tests.Pages
 
 
         [Fact]
-        public void X_Should_Win()
+        public void O_Should_Win()
         {
 
             var ticTacToeGame = new TicTacToeGame(new TicTacToeHorizontalChecker(), new TicTacToeVerticalChecker(), new TicTacToeDiagonalChecker());
