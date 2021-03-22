@@ -1,7 +1,9 @@
 @page "/tictactoe"
 @inject ITicTacToeGame TicTacToeGame;
-<h3>Tic Tac Toe</h3>
+
+<h2>Tic Tac Toe</h2>
 <h3>Game state: @TicTacToeGame.CurrentTicTacToeGameStatus</h3>
+
 <TicTacToeGameBoard TicTacToeGame=@TicTacToeGame SelectCell=SelectCell ></TicTacToeGameBoard>>
 
 @code
@@ -9,11 +11,6 @@
     public GameSpace[,] Spaces { get; set; }
 
     public TicTacToeEnum CurrentGameState { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        Console.WriteLine("Clicked");
-    }
 
     public void SelectCell()
     {

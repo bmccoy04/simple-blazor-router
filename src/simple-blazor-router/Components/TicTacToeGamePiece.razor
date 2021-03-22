@@ -20,9 +20,8 @@
     private async void ClickSquare()
     {
         var selected = TicTacToeGame.SelectSpace(SpaceX, SpaceY);
-        Console.WriteLine("Clicked");
 
-        Console.WriteLine(selected);
+        Console.WriteLine(SpaceX + " - " + SpaceY);
         Console.WriteLine(TicTacToeGame.SpaceValue(SpaceX, SpaceY));
 
         if(selected)
