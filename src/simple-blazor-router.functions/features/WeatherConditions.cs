@@ -15,11 +15,11 @@ namespace simple_blazor_router.functions.features
 {
     public class WeatherConditions
     {
-        private readonly IWeatherConditionsProvider _weatherConditionsPrivder;
+        private readonly IWeatherConditionsProvider _weatherConditionsProvider;
 
         public WeatherConditions(IWeatherConditionsProvider weatherConditionsProvider)
         {
-            _weatherConditionsPrivder = weatherConditionsProvider;
+            _weatherConditionsProvider = weatherConditionsProvider;
         }
 
         [FunctionName("weather-conditions")]
@@ -33,9 +33,9 @@ namespace simple_blazor_router.functions.features
             string responseMessage = "";
 
             if(string.IsNullOrEmpty(id))
-                responseMessage = JsonConvert.SerializeObject(_weatherConditionsPrivder.Get().ToList());   
+                responseMessage = JsonConvert.SerializeObject(_weatherConditionsProvider.Get().ToList());   
             else 
-                responseMessage = JsonConvert.SerializeObject(_weatherConditionsPrivder.Get(int.Parse(id)));
+                responseMessage = JsonConvert.SerializeObject(_weatherConditionsProvider.Get(int.Parse(id)));
 
             return new OkObjectResult(responseMessage);
         }
