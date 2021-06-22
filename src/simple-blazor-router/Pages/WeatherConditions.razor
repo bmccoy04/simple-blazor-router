@@ -1,0 +1,68 @@
+@page "/weather-conditions"
+@inject HttpClient Http
+
+<h1>Weather Conditions</h1>
+
+@if(!String.IsNullOrWhiteSpace(errorMessage))
+{
+    <p><em>@errorMessage</em></p>
+}
+else if (conditions == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var condition in conditions)
+            {
+                <tr>
+                    <td>@condition.Name</td>
+                    <td>@condition.Type</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private WeatherCondition[] conditions;
+
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        errorMessage = null;
+        try
+        {
+            var response = await Http.GetAsync("http://localhost:7071/api/weather-conditions");
+
+            if(response.IsSuccessStatusCode)
+                conditions = await response.Content.ReadFromJsonAsync<WeatherCondition[]>();
+            else if(response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                errorMessage = "Something not great happen";
+            else if(response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                errorMessage = "Items not found";
+
+            //conditions = await Http.GetFromJsonAsync<WeatherCondition[]>("http://localhost:7071/api/weather-conditions");
+        } 
+        catch(Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+
+    public class WeatherCondition
+    {
+        public string Name { get; set; }
+        public string Type { get; set; }
+    }
+}

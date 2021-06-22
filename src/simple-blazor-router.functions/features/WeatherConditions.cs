@@ -33,11 +33,21 @@ namespace simple_blazor_router.functions.features
             string responseMessage = "";
 
             if(string.IsNullOrEmpty(id))
+            {
                 responseMessage = JsonConvert.SerializeObject(_weatherConditionsProvider.Get().ToList());   
-            else 
-                responseMessage = JsonConvert.SerializeObject(_weatherConditionsProvider.Get(int.Parse(id)));
 
-            return new OkObjectResult(responseMessage);
+                var response = new ObjectResult("No conditions found");
+
+                response.StatusCode = 404;
+
+                return response;
+                //return new OkObjectResult(responseMessage);
+            }
+            else 
+            {
+                responseMessage = JsonConvert.SerializeObject(_weatherConditionsProvider.Get(int.Parse(id)));
+                return new OkObjectResult(responseMessage);
+            }
         }
     }
 }
